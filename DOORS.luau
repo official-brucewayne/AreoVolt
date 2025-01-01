@@ -39,6 +39,19 @@ local function delete(item)
 	item:Destroy()
 end
 
+local function notify(title, text, duration)
+	if duration == nil then
+		duration = 4.5
+	end
+
+	Rayfield:Notify({
+   		Title = title,
+  		Content = text,
+  		Duration = duration,
+  		Image = 4483362458,
+	})
+end
+
 local Tab = Window:CreateTab("Entities", 4483362458) -- Title, Image
 
 local antiEntity = Tab:CreateSection("Anti Entity")
@@ -67,3 +80,5 @@ local antiScreech = Tab:CreateToggle({
 
 
 Rayfield:LoadConfiguration()
+
+notify("AreoVolt DOORS Successfully Loaded.", "Have Fun!")
