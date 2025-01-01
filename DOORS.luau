@@ -7,7 +7,7 @@ local Window = Rayfield:CreateWindow({
 	LoadingSubtitle = "Give us a sec..",
 	Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
-	DisableRayfieldPrompts = false,
+	DisableRayfieldPrompts = true,
 	DisableBuildWarnings = true, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
 
 	ConfigurationSaving = {
@@ -38,11 +38,11 @@ local function delete(item)
 	item:Destroy()
 end
 
-local Tab = Window:CreateTab("Entities", 4483362458) -- Title, Image
+local entitiesTab = Window:CreateTab("Entities", 4483362458) -- Title, Image
 
 local antiEntity = Tab:CreateSection("Anti Entity")
 
-local antiScreech = antiEntity:CreateToggle({
+local antiScreech = entitiesTab:CreateToggle({
 	Name = "Anti-Screech",
 	CurrentValue = false,
 	Flag = "AntiScreech", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
