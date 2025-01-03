@@ -261,7 +261,7 @@ local getFlag = function(name)
     end
 end
 -------------------------------------------------------------------------------
-local success = verifyKey(_G.key)
+local success = verifyKey(_G.Key)
 
 if success then
     game:GetService("StarterGui"):SetCore("SendNotification",{
