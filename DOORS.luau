@@ -6,7 +6,7 @@ local Window = Rayfield:CreateWindow({
 	LoadingTitle = "AreoVolt DOORS Loading",
 	LoadingSubtitle = "Give us a sec..",
 	Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
-	
+
 
 	DisableRayfieldPrompts = true,
 	DisableBuildWarnings = true, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
@@ -45,10 +45,10 @@ local function notify(title, text, duration)
 	end
 
 	Rayfield:Notify({
-   		Title = title,
-  		Content = text,
-  		Duration = duration,
-  		Image = 4483362458,
+		Title = title,
+		Content = text,
+		Duration = duration,
+		Image = 4483362458,
 	})
 end
 
@@ -63,7 +63,7 @@ local antiScreech = Tab:CreateToggle({
 	Callback = function(Value)
 		if Value == true then
 			local camera = game.Workspace:WaitForChild("Camera")
-			
+
 			camera.ChildAdded:Connect(function(child)
 				if child.Name == "Screech" then
 					delete(camera:FindFirstChild("Screech"))
@@ -75,8 +75,89 @@ local antiScreech = Tab:CreateToggle({
 	end,
 })
 
+local antiA90 = Tab:CreateButton({
+	Name = "Delete A-90",
+	Callback = function()
+		delete(game.ReplicatedStorage:WaitForChild("RemotesFolder"):WaitForChild("A90"))
+	end,
+})
 
+local notifyEntities = Tab:CreateSection("Entity Notifier")
 
+local notifyA60 = Tab:CreateToggle({
+	Name = "A-60 Notifier",
+	CurrentValue = false,
+	Flag = "notifyA60",
+	Callback = function(Value)
+		if Value == true then
+			game.Workspace.ChildAdded:Connect(function(child)
+				if child.Name == "A60" then
+					notify("A-60 has spawned!", "Find a hiding spot quick!")
+				end
+			end)
+		end
+	end
+})
+
+local notifyA120 = Tab:CreateToggle({
+	Name = "A-120 Notifier",
+	CurrentValue = false,
+	Flag = "notifyA120",
+	Callback = function(Value)
+		if Value == true then
+			game.Workspace.ChildAdded:Connect(function(child)
+				if child.Name == "A120" then
+					notify("A-120 has spawned!", "Find a hiding spot quick!")
+				end
+			end)
+		end
+	end
+})
+
+local notifyAmbush = Tab:CreateToggle({
+	Name = "Ambush Notifier",
+	CurrentValue = false,
+	Flag = "notifyAmbush",
+	Callback = function(Value)
+		if Value == true then
+			game.Workspace.ChildAdded:Connect(function(child)
+				if child.Name == "AmbushMoving" then
+					notify("Ambush has spawned!", "Find a hiding spot quick!")
+				end
+			end)
+		end
+	end
+})
+
+local notifyRush = Tab:CreateToggle({
+	Name = "Rush Notifier",
+	CurrentValue = false,
+	Flag = "notifyRush",
+	Callback = function(Value)
+		if Value == true then
+			game.Workspace.ChildAdded:Connect(function(child)
+				if child.Name == "RushMoving" then
+					notify("Rush has spawned!", "Find a hiding spot quick!")
+				end
+			end)
+		end
+	end
+})
+
+local notifyCustom = Tab:CreateToggle({
+    Name = "Custom Entity Notifier",
+    CurrentValue = false,
+    Flag = "notifyCustom",
+    Callback = function(Value)
+        if Value == true then
+             game.Workspace.ChildAdded:Connect(function(child)
+				if child.Name == "CustomEntity" then
+					notify("A custom entity has spawned!", "Find a hiding spot quick!")
+				end
+			end)
+        end
+    end
+})
 
 
 Rayfield:LoadConfiguration()
