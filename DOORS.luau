@@ -52,6 +52,21 @@ local function notify(title, text, duration)
 	})
 end
 
+local GameTab = Window:CreateTab("Game", 4483362458) -- Title, Image
+
+local instantInteract = Tab:CreateToggle({
+	Name = "Instant Interact",
+	CurrentValue = false,
+	Flag = "instantInteract",
+	Callback = function(Value)
+		if Value == true then
+			game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
+       				fireproximityprompt(prompt)
+			end)
+		end
+	end,
+})
+
 local Tab = Window:CreateTab("Entities", 4483362458) -- Title, Image
 
 local antiEntity = Tab:CreateSection("Anti Entity")
