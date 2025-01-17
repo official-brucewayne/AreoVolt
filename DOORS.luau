@@ -54,7 +54,7 @@ end
 
 local GameTab = Window:CreateTab("Game", 4483362458) -- Title, Image
 
-local instantInteract = Tab:CreateToggle({
+local instantInteract = GameTab:CreateToggle({
 	Name = "Instant Interact",
 	CurrentValue = false,
 	Flag = "instantInteract",
