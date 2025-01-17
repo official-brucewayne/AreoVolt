@@ -61,7 +61,7 @@ local instantInteract = GameTab:CreateToggle({
 	Callback = function(Value)
 		if Value == true then
 			game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
-       				--fireproximityprompt(prompt)
+       				fireproximityprompt(prompt)
 			end)
 		end
 	end,
