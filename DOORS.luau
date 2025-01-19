@@ -54,6 +54,17 @@ end
 
 local GameTab = Window:CreateTab("Game", 4483362458) -- Title, Image
 
+local autoInteract = GameTab:CreateToggle({
+	Name = "(TEST) Auto Interact (May interact with things not intended to)",
+	CurrentValue = false,
+	Flag = "autoInteract",
+	Callback = function(Value)
+		game:GetService("ProximityPromptService").PromptShown:Connect(function(prompt)
+			fireproximityprompt(prompt)
+		end)
+	end,
+})
+
 local instantInteract = GameTab:CreateToggle({
 	Name = "Instant Interact",
 	CurrentValue = false,
