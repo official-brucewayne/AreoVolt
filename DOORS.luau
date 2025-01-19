@@ -59,12 +59,10 @@ local autoInteract = GameTab:CreateToggle({
 	CurrentValue = false,
 	Flag = "autoInteract",
 	Callback = function(Value)
-		if Value == true then
+		while Value == true do
 			game:GetService("ProximityPromptService").PromptShown:Connect(function(prompt)
 				fireproximityprompt(prompt)
 			end)
-		else
-			return
 		end
 	end,
 })
